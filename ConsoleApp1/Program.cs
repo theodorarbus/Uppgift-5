@@ -6,6 +6,9 @@ namespace EnkelKalkylator
     { 
         static void Main(string[] args)
         {
+            bool NyBeräkning = true;
+            while (NyBeräkning)
+            {
                 Console.WriteLine("Enkel Kalkylator");
                 Console.WriteLine("Ange operation (+, -, *, /): ");
                 char operation = Console.ReadKey().KeyChar;
@@ -29,6 +32,12 @@ namespace EnkelKalkylator
                         break;
                     case '/':
                         result = num1 / num2;
+                        if (result == 0)
+                        {
+                            //för
+                            Console.WriteLine("ogiltig operation. Division med 0 ej tillåtet");
+                            return;
+                        }
                         break;
                     default:
                         Console.WriteLine("Ogiltig operation.");
@@ -36,6 +45,9 @@ namespace EnkelKalkylator
                 }
 
                 Console.WriteLine($"Resultat: {result}");
+                Console.WriteLine("Tryck valfri knapp för att göra ny beräkning");
+                char knapp = Console.ReadKey(true).KeyChar;
+            }
         }
     }
 }
